@@ -59,7 +59,8 @@ Meteor stores persistent data in collections in the form of JavaScript objects c
 
 Once your collection has been created, you can then insert, update, delete, and return documents. Here are some examples:
 
-```MyDocuments.insert({
+```
+MyDocuments.insert({
   title: "A New Document",
   author: "Patrick Coffey",
   body: "This is my document body."
@@ -79,7 +80,8 @@ MyDocuments.update({
 
 MyDocuments.delete({
   title: "A New Document"
-});```
+});
+```
 
 As mentioned previously, these operations can be done on either the client, or the server, and changes to a document will be synced between the two.
 
