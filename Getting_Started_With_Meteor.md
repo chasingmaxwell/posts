@@ -63,24 +63,21 @@ Once your collection has been created, you can then insert, update, delete, and 
   title: "A New Document",
   author: "Patrick Coffey",
   body: "This is my document body."
-});```
+});
 
-
-```MyDocuments.find({
+MyDocuments.find({
   author: "Patrick Coffey"
-});```
+});
 
-
-```MyDocuments.update({
+MyDocuments.update({
   title: "A New Document"
 }, {
   $set: {
     body: "Penguins are cool. Tux is my favorite!"
   }
-});```
+});
 
-
-```MyDocuments.delete({
+MyDocuments.delete({
   title: "A New Document"
 });```
 
