@@ -25,7 +25,7 @@ This is also very simple. Go to your console, and change your working directory 
 
 ```meteor create myAppName```
 
-This command will create a directory in your present working directory called `myAppName`. Inside of the directory you should find a js, css, and html file. You should be able to run your Meteor app simply by running `meteor` in your app's directory. Once Meteor has finished it's startup processes, you'll be able to go to `http://localhost:3000` in a browser, and see the sample Meteor app as defined in the default js/css/html files in your app root. 
+This command will create a directory in your present working directory called `myAppName`. Inside of the directory you should find a js, css, and html file. You should be able to run your Meteor app simply by running `meteor` in your app's directory. Once Meteor has finished it's startup processes, you'll be able to go to `http://localhost:3000` in a browser, and see the sample Meteor app as defined in the default js/css/html files in your app root.
 
 ##Structuring your app
 There's a couple things you should know about Meteor before starting to write your code. If you don't understand these basic principles, you may get confused as to what code is running where, and when.
@@ -55,3 +55,5 @@ Code that isn't in a client/server folder, and isn't wrapped in a conditional as
 ###Publish/subscribe methods
 Meteor provides a mechanism that sort of "sycs" data between the server and the client. The server publishes data sets to the client, and the client can (conditionally) subscribe to that publication. I'd encourage you to read the [documentation](https://docs.meteor.com/#/basic/pubsub) on publishing/subscribing in Meteor.
 
+##A helpful boilerplate
+Through my experiances with Meteor, discovered some useful organization patterns and some packages that enable a lot of commonly nessecary functionality. So, I put together a quick boilerplate for Meteor. It's a good starting point for Meteor applications, and it may help clarify some parts of Meteor, as it is a working example. Check it out on [Github](https://github.com/patrickocoffeyo/meteor-boilerplate)!
