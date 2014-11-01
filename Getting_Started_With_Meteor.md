@@ -27,7 +27,7 @@ This is also very simple. Go to your console, and change your working directory 
 
 This command will create a directory in your present working directory called `myAppName`. Inside of the directory you should find a js, css, and html file. You should be able to run your Meteor app simply by running `meteor` in your app's directory. Once Meteor has finished it's startup processes, you'll be able to go to `http://localhost:3000` in a browser, and see the sample Meteor app as defined in the default js/css/html files in your app root.
 
-##Structuring your app
+##Basic principles
 There's a couple things you should know about Meteor before starting to write your code. If you don't understand these basic principles, you may get confused as to what code is running where, and when.
 
 ###Client and server code
@@ -51,6 +51,41 @@ The second way involves wrapping code blocks in conditionals that check the envi
 }```
 
 Code that isn't in a client/server folder, and isn't wrapped in a conditional as demonsrated above gets published to both the client and the server.
+
+###Collections
+Meteor stores persistent data in collections in the form of JavaScript objects called documents. Once created, these collections act like a MongDB collection but will allow your code to interact with documents both on the client and the server. Creating a collection is very easy. In a file that is loaded on both the client and the server, you can create a collection like so:
+
+```MyDocuments = new Mongo.Collection("mydocuments");```
+
+Once your collection has been created, you can then insert, update, delete, and return documents. Here are some examples:
+
+```MyDocuments.insert({
+  title: "A New Document",
+  author: "Patrick Coffey",
+  body: "This is my document body."
+});```
+
+
+```MyDocuments.find({
+  author: "Patrick Coffey"
+});```
+
+
+```MyDocuments.update({
+  title: "A New Document"
+}, {
+  $set: {
+    body: "Penguins are cool. Tux is my favorite!"
+  }
+});```
+
+
+```MyDocuments.delete({
+  title: "A New Document"
+});```
+
+As mentioned previously, these operations can be done on either the client, or the server, and changes to a document will be synced between the two.
+
 
 ###Publish/subscribe methods
 Meteor provides a mechanism that sort of "sycs" data between the server and the client. The server publishes data sets to the client, and the client can (conditionally) subscribe to that publication. I'd encourage you to read the [documentation](https://docs.meteor.com/#/basic/pubsub) on publishing/subscribing in Meteor.
