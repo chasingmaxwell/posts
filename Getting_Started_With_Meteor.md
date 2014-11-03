@@ -87,7 +87,31 @@ As mentioned previously, these operations can be done on either the client, or t
 
 
 ###Publish/subscribe methods
-Meteor provides a mechanism that sort of "sycs" data between the server and the client. The server publishes data sets to the client, and the client can (conditionally) subscribe to that publication. I'd encourage you to read the [documentation](https://docs.meteor.com/#/basic/pubsub) on publishing/subscribing in Meteor.
+Meteor provides a mechanism that sort of "sycs" data between the server and the client. The server publishes data sets to the client, and the client can (conditionally) subscribe to that publication. Here is an example using our `MyDocuments` collection:
+
+```
+// Publishes documents by author.
+if (Meteor.isServer) {
+  Meteor.publish("MyDocumentsByAuthor", function (authorName) {
+    // Make sure argument is a string.
+    check(authorName, String);
+    
+    // Return a cursor for the MyDocuments collection.
+    return MyDocuments.find({
+      author: authorName
+    });
+  });
+}
+
+// On the client, subscribe to "MyDocumentsByAuthor" for the author "Patrick Coffey".
+if (Meteor.isClient) {
+  Meteor.subscribe("MyDocumentsByAuthor", "Patrick Coffey").ready(function() {
+    console.log('yay, subscription has been formed and data is available!');
+  }));
+}
+```
+
+I'd encourage you to read the [documentation](https://docs.meteor.com/#/basic/pubsub) on publishing/subscribing in Meteor.
 
 ##A helpful boilerplate
 Through my experiances with Meteor, discovered some useful organization patterns and some packages that enable a lot of commonly nessecary functionality. So, I put together a quick boilerplate for Meteor. It's a good starting point for Meteor applications, and it may help clarify some parts of Meteor, as it is a working example. Check it out on [Github](https://github.com/patrickocoffeyo/meteor-boilerplate)!
