@@ -111,7 +111,13 @@ if (Meteor.isClient) {
 }
 ```
 
+It should be noted that there is a package called `autopublish` that's installed by default. It's really useful when prototyping, as it simply publishes all data to the client. However, as soon as you make a publish/subscription you'll need to remove the package because you'll no longer need it. This can be done by running `meteor remove autopublish`.
+
 I'd encourage you to read the [documentation](https://docs.meteor.com/#/basic/pubsub) on publishing/subscribing in Meteor.
+
+###Templating system
+Once you have defined a collection, added some documents to your collection, and published those documents to the client, you can present your data to a user by rendering it using Meteors template system, Blaze.
+
 
 ##A helpful boilerplate
 Through my experiances with Meteor, discovered some useful organization patterns and some packages that enable a lot of commonly nessecary functionality. So, I put together a quick boilerplate for Meteor. It's a good starting point for Meteor applications, and it may help clarify some parts of Meteor, as it is a working example. Check it out on [Github](https://github.com/patrickocoffeyo/meteor-boilerplate)!
