@@ -1,6 +1,6 @@
 #Getting Started With Meteor
 
-There's been a lot of talk recently about a new JavaScript framework called [Meteor](http://meteor.com), especially since the project just reached version 1.0. So, what is Meteor? Why is it different than the hundreds of other JS frameworks available? I’ve had the opportunity to build several Meteor applications using the beta, all of which are now working in a production environment, and through these experiences I’ve learned a lot about about how Meteor works, so I thought I'd share some of my knowledge. This post is the first in a series of post that will explain what Meteor is, how to get started with using it, how to properly structure your Meteor codebase, and how to build large, mantainable applications in it. 
+There's been a lot of talk recently about a new JavaScript framework called [Meteor](http://meteor.com), especially since the project just reached version 1.0. So, what is Meteor? Why is it different than the hundreds of other JS frameworks available? I’ve had the opportunity to build several Meteor applications using the beta, all of which are now working in a production environment. Through these experiences I’ve learned a lot about about how Meteor works, so I thought I'd share some of my knowledge. This post is the first in a series of posts that will discuss what Meteor is, how to get started with it, how to write secure Meteor applications, and proper codebase structure. 
 
 This post is geared towards people who are completely new to Meteor, and is a basic list of instructions for installing Meteor, creating a Meteor app, and running your app for the first time. I'd encourage you to take a look at the [official documentation](docs.meteor.com) and play around with the APIs available before attempting to build anything serious. With that said, let's get started!
 
@@ -26,6 +26,22 @@ This is also very simple. Go to your console, and change your working directory 
 ```meteor create myAppName```
 
 This command will create a directory in your present working directory called `myAppName`. Inside of the directory you should find a js, css, and html file. You should be able to run your Meteor app simply by running `meteor` in your app's directory. Once Meteor has finished it's startup processes, you'll be able to go to `http://localhost:3000` in a browser, and see the sample Meteor app as defined in the default js/css/html files in your app root.
+
+
+##Package Manager
+Meteor has a package management system, and lots of great packages are available on [Atmosphere](https://atmospherejs.com/). It's easy to install packages. In your command line, run:
+
+```
+meteor add myPackageName
+```
+
+... and to remove a package:
+
+```
+meteor remove myPackageName
+```
+
+Often times the package name will consist of a user name, and a package name, like `patrickocoffeyo:aCoolPackage`.
 
 ##Basic principles
 There's a couple things you should know about Meteor before starting to write your code. If you don't understand these basic principles, you may get confused as to what code is running where, and when.
@@ -111,12 +127,12 @@ if (Meteor.isClient) {
 }
 ```
 
-It should be noted that there is a package called `autopublish` that's installed by default. It's really useful when prototyping, as it simply publishes all data to the client. However, as soon as you make a publish/subscription you'll need to remove the package because you'll no longer need it. This can be done by running `meteor remove autopublish`.
+It should be noted that there is a package called `autopublish` that's installed by default. It's really useful when prototyping, as it simply publishes all data to the client. Past testing and prototyping, this package is useless and actually harmful. As soon as you make a publish/subscription you'll need to remove the package because you'll no longer need it. This can be done by running `meteor remove autopublish`.
 
 I'd encourage you to read the [documentation](https://docs.meteor.com/#/basic/pubsub) on publishing/subscribing in Meteor.
 
 ###Templating system
-Once you have defined a collection, added some documents to your collection, and published those documents to the client, you can present your data to a user by rendering it using Meteors reactive template system, [Blaze](https://docs.meteor.com/#/full/blaze). You can easily pass document objects to your template layer to be rendered:
+Once you have defined a collection, added some documents to your collection, and published those documents to the client, you can present your data to a user by rendering it using Meteors reactive template system, [Blaze](https://docs.meteor.com/#/full/blaze). You can easily pass document objects to the template layer:
 
 ```
 if (Meteor.isClient) {
@@ -133,13 +149,28 @@ if (Meteor.isClient) {
 And in your template file, you can render data:
 
 ```
-<div class="documents">
-  {{#each myDocuments}}
-    {{> task}}
-  {{/each}}
-</div>
+{{#each myDocuments}}
+  Title: {{> title}},
+  Author: {{> author}},
+  Body: {{> body}}
+{{/each}}
 ```
+
+With the example document I created eariler, this would render in the browser as:
+
+```
+Title: A New Document,
+Author: Patrick Coffey,
+Body: Penguins are cool. Tux is my favorite!
+```
+
+Blaze is very versitile, I'll go into more detail on Blaze in a later blog post, but for now be sure to visit the [documentation](https://docs.meteor.com/#/full/blaze) for blaze.
 
 
 ##A helpful boilerplate
-Through my experiances with Meteor, discovered some useful organization patterns and some packages that enable a lot of commonly nessecary functionality. So, I put together a quick boilerplate for Meteor. It's a good starting point for Meteor applications, and it may help clarify some parts of Meteor, as it is a working example. Check it out on [Github](https://github.com/patrickocoffeyo/meteor-boilerplate)!
+Through my experiances with Meteor, discovered some useful organization patterns and some packages that enable a lot of commonly necessary functionality. So, I put together a quick boilerplate for Meteor. It's a good starting point for Meteor applications, and it may help clarify some parts of Meteor, as it is a working example. Check it out on [Github](https://github.com/patrickocoffeyo/meteor-boilerplate), and of course feel free to fork it and contribute.
+
+##What's next?
+In my next post about Meteor, I'm going to address some common security concerns that people have when using Meteor.
+
+
