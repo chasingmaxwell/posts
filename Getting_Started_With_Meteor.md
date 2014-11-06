@@ -2,10 +2,10 @@
 
 There's been a lot of talk recently about a new JavaScript framework called [Meteor](http://meteor.com), especially since the project just reached version 1.0. I’ve had the opportunity to build several Meteor applications using the beta, all of which are now running in a production environment. Through these experiences I’ve learned a lot about about how Meteor works, so I thought I'd share some of my knowledge. This post is the first in a series of posts that will discuss what Meteor is, getting started with Meteor, writing secure Meteor applications, and properly structuring your codebase. 
 
-This post is geared towards people who are completely new to Meteor, and is a basic list of instructions for installing Meteor, creating a Meteor app, and running your app for the first time. I'd encourage you to take a look at the [official documentation](docs.meteor.com) and play around with the APIs available before attempting to build anything serious. With that said, let's get started!
+This post is geared towards people who are completely new to Meteor and is a basic list of instructions for installing Meteor, creating a Meteor app, and running your app for the first time. I'd encourage you to take a look at the [official documentation](docs.meteor.com) and play around with the APIs available before attempting to build anything serious. With that said, let's get started!
 
 ##What is Meteor?
-In short, Meteor is a JavaScript framework that enables developers to quickly create reactive applications that are highly accessable. It comes with a well-baked package system, tools for publishing to mobile devices using Cordova, deployment tools. And yet, it is surprisingly agnostic as to how your application should be structured. It simply serves as a collection of tools that stand between your server side code and your client side code, and facilitates the organized transfer of data between the two.
+In short, Meteor is a JavaScript framework that enables developers to quickly create reactive applications that are highly accessable. It comes with a well-baked package system, tools for publishing to mobile devices using Cordova, deployment tools. And yet, Meteor is surprisingly agnostic as to how your application should be structured. It simply serves as a collection of tools that stand between your server side code and your client side code, and facilitates the organized transfer of data between the two.
 
 ##Installing Meteor
 ###Linux/OSX
@@ -29,7 +29,7 @@ This command will create a directory in your present working directory called `m
 
 
 ##Package Manager
-By design Meteor is very light in it's vanilla state, and doesn't contain a bunch of features. However, it comes with a package management system, and lots of great packages are available on [Atmosphere](https://atmospherejs.com). These packages provide useful features, like routers, user role systems, and file managers. It's easy to install packages. In your command line, run:
+By design Meteor is very light in it's vanilla state and doesn't contain a bunch of features. However, it comes with a package management system and lots of great packages are available on [Atmosphere](https://atmospherejs.com). These packages provide useful features like routers, user role systems, and file managers. It's easy to install packages. In your command line, run:
 
 ```
 meteor add myPackageName
@@ -41,7 +41,7 @@ meteor add myPackageName
 meteor remove myPackageName
 ```
 
-Often times the package name will consist of a user name, and a repository name. For example,  `patrickocoffeyo:aCoolPackage` would refer to a package named `aCoolPackage` that I published using my Atmosphere user, [patrickocoffeyo](https://atmospherejs.com/patrickocoffeyo).
+Often times the package name will consist of a user name and a repository name. For example,  `patrickocoffeyo:aCoolPackage` would refer to a package named `aCoolPackage` that I published using my Atmosphere user, [patrickocoffeyo](https://atmospherejs.com/patrickocoffeyo).
 
 ##Basic principles
 There's a couple things you should know about Meteor before starting to write your code. If you don't understand these basic principles, you may get confused as to what code is running where, and when.
@@ -66,7 +66,7 @@ The second way involves wrapping code blocks in conditionals that check the envi
   // Do some stuff on the server.
 }```
 
-Code that isn't in a client/server folder, and isn't wrapped in a conditional as demonsrated above gets published to both the client and the server.
+Code that isn't in a client/server folder, and isn't wrapped in a conditional as demonsrated above, gets published to both the client and the server.
 
 ###Collections
 Meteor stores persistent data in collections in the form of JavaScript objects called documents. Once created, these collections act like a MongDB collection but will allow your code to interact with documents both on the client and the server. Creating a collection is very easy. In a file that is loaded on both the client and the server, you can create a collection like so:
@@ -127,7 +127,7 @@ if (Meteor.isClient) {
 }
 ```
 
-It should be noted that there is a package called `autopublish` that's installed by default. It's really useful when prototyping, as it simply publishes all data to the client. Past testing and prototyping, this package is useless and actually harmful. As soon as you make a publish/subscription you'll need to remove the package because you'll no longer need it. This can be done by running `meteor remove autopublish`.
+It should be noted that there is a package called `autopublish` that's installed by default. It's really useful when prototyping as it simply publishes all data to the client. Past testing and prototyping, this package is useless and actually harmful. As soon as you make a publish/subscription you'll need to remove the package because you'll no longer need it. This can be done by running `meteor remove autopublish`.
 
 I'd encourage you to read the [documentation](https://docs.meteor.com/#/basic/pubsub) on publishing/subscribing in Meteor.
 
@@ -168,9 +168,9 @@ Blaze is very versitile, I'll go into more detail on Blaze in a later blog post,
 
 
 ##A helpful boilerplate
-Through my experiances with Meteor, discovered some useful organization patterns and some packages that enable a lot of commonly necessary functionality. So, I put together a quick boilerplate for Meteor. It's a good starting point for Meteor applications, and it may help clarify some parts of Meteor, as it is a working example. Check it out on [Github](https://github.com/patrickocoffeyo/meteor-boilerplate), and of course feel free to fork it and contribute.
+Through my experiances with Meteor, I've discovered some useful organization patterns and some packages that enable a lot of common and necessary functionality. So, I put together a quick boilerplate for Meteor. It's a good starting point for Meteor applications, and it may help clarify some parts of Meteor, as it is a working example. Check it out on [Github](https://github.com/patrickocoffeyo/meteor-boilerplate) and of course feel free to fork it and contribute.
 
 ##What's next?
-In my next post about Meteor, I'm going to talk about building secure Meteor applications, and address several commonly voiced security concerns. I'll also discuss the subscription/publication model in greater depth, and show you how the to make secure publications.
+In my next post about Meteor, I'm going to talk about building secure Meteor applications and address several commonly voiced security concerns. I'll also discuss the subscription/publication model in greater depth and show you how the to make secure publications.
 
 
