@@ -1,6 +1,6 @@
 #Getting Started With Meteor
 
-There's been a lot of talk recently about a new JavaScript framework called [Meteor](http://meteor.com), especially since the project just recently reached version 1.0. So, what is Meteor? Why is it different than the hundreds of other JS frameworks available? I’ve had the opportunity to build several Meteor applications using the beta, all of which are now working in a production environment, and through these experiences I’ve learned a lot about about how Meteor works, so I thought I'd share some of my knowledge with a series of blog posts. This post is the first in a series of post that will explain what Meteor is, why it's important, how to get started with using it, how to properly structure your Meteor codebase, and how to build large, mantainable applications in it. 
+There's been a lot of talk recently about a new JavaScript framework called [Meteor](http://meteor.com), especially since the project just reached version 1.0. So, what is Meteor? Why is it different than the hundreds of other JS frameworks available? I’ve had the opportunity to build several Meteor applications using the beta, all of which are now working in a production environment, and through these experiences I’ve learned a lot about about how Meteor works, so I thought I'd share some of my knowledge. This post is the first in a series of post that will explain what Meteor is, how to get started with using it, how to properly structure your Meteor codebase, and how to build large, mantainable applications in it. 
 
 This post is geared towards people who are completely new to Meteor, and is a basic list of instructions for installing Meteor, creating a Meteor app, and running your app for the first time. I'd encourage you to take a look at the [official documentation](docs.meteor.com) and play around with the APIs available before attempting to build anything serious. With that said, let's get started!
 
@@ -116,7 +116,29 @@ It should be noted that there is a package called `autopublish` that's installed
 I'd encourage you to read the [documentation](https://docs.meteor.com/#/basic/pubsub) on publishing/subscribing in Meteor.
 
 ###Templating system
-Once you have defined a collection, added some documents to your collection, and published those documents to the client, you can present your data to a user by rendering it using Meteors template system, Blaze.
+Once you have defined a collection, added some documents to your collection, and published those documents to the client, you can present your data to a user by rendering it using Meteors reactive template system, [Blaze](https://docs.meteor.com/#/full/blaze). You can easily pass document objects to your template layer to be rendered:
+
+```
+if (Meteor.isClient) {
+  Template.myTemplateName.helpers({
+    myDocuments: function() { 
+      return MyDocuments.find({
+      	author: "Patrick Coffey"
+      });
+    }
+  });
+}
+```
+
+And in your template file, you can render data:
+
+```
+<div class="documents">
+  {{#each myDocuments}}
+    {{> task}}
+  {{/each}}
+</div>
+```
 
 
 ##A helpful boilerplate
