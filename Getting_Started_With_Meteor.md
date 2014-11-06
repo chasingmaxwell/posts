@@ -9,7 +9,7 @@ In short, Meteor is a JavaScript framework that enables developers to quickly cr
 
 ##Installing Meteor
 ###Linux/OSX
-It's very simple on a unix-based operating system. Run this code in your command prompt:
+Installing Meteor on a unix-based operating system is very simple. Run this code in your command prompt:
 
 ```curl https://install.meteor.com | /bin/sh```
 
