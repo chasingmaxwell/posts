@@ -5,7 +5,7 @@ There's been a lot of talk recently about a new JavaScript framework called [Met
 This post is geared towards people who are completely new to Meteor, and is a basic list of instructions for installing Meteor, creating a Meteor app, and running your app for the first time. I'd encourage you to take a look at the [official documentation](docs.meteor.com) and play around with the APIs available before attempting to build anything serious. With that said, let's get started!
 
 ##What is Meteor?
-In short, Meteor is a JavaScript framework that enables developers to quickly create reactive applications that are highly accessable. It comes with a well-baked package system, tools for publishing to mobile devices using Cordova, deployment tools. And yet, it is surprisingly agnostic as to how your application should be structured. It simply serves as a collection of tools that stand between your server side code and your client side code, and facilitates the organized transfer of data between the two.
+In short, Meteor is a JavaScript framework that enables developers to quickly create reactive applications that are highly accessable. It comes with a well-baked package system, tools for publishing to mobile devices using Cordova, and great deployment/testing tools. And yet, it is surprisingly agnostic as to how your application should be structured. It simply serves as a collection of tools that stand between your server side code and your client side code, and facilitates the organized transfer of data between the two.
 
 ##Installing Meteor
 ###Linux/OSX
