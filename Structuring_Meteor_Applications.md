@@ -6,7 +6,8 @@ I'm going to discuss the importance of implementing proper structure patterns in
 
 ##File organization
 Organizing your source tree can be really difficult, but having a specifically defined pattern for this is crucial, especially as you scale your project. There are lots of source tree patterns available ([Maven being a popular one](http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html)). However Meteor is unique in that it doesn't follow the standard request/response format that most web applications do. 
-As you might know, JavaScript in a Meteor project get’s published to the server, or the client, or to both. Meteor allows you to control where files get published by respecting a few folder names. Anything code outside of these folders is published to both the server and the client.
+
+As you might know, JavaScript in a Meteor project gets published to the server, or the client, or to both. Meteor allows you to control where files get published by respecting a few folder names. Any code outside of these folders is published to both the server and the client.
 
 * `/client` - Files within this folder get published to the browser.
 * `/server` - Files within this folder are run on the server only.
@@ -24,10 +25,10 @@ I've found that one of the best ways to organize files is to group them by featu
 
 This organization pattern helps developers separate code files by module. Using this pattern enables multiple developers to work on the same project without conflict. It also makes maintenance a lot easier, and allows for organized documentation.
 
-The difficult thing about this pattern is knowing when a block of code should be placed in an existing module, and when it should be in it's own module. I've found that following one rule can help mitigate this problem: If a piece of code is directly/exclusively used by, specifically related to, and accurately defined by a module that currently exists, place it in that module. If a piece of code may have multiple defendants and isn't specifically related to any of it's dependents, it should be it's own module.
+The difficult thing about this pattern is knowing when a block of code should be placed in an existing module, and when it should be in its own module. I've found that following one rule can help mitigate this problem: If a piece of code is directly/exclusively used by, specifically related to, and accurately defined by a module that currently exists, place it in that module. If a piece of code may have multiple defendants and isn't specifically related to any of its dependents, it should be its own module.
 
 ###Building features in packages
-Meteor has a powerfull [package system](http://docs.meteor.com/#/full/writingpackages) that allows portable feature sets to be created. Dependencies between packages and npm modules can be officially and explicitly declared. Individual packages can be versioned. Packages can also be re-used in other projects, which can be really useful! Most of the time I build my modules into packages, and I implement the same `/client`, `/server/`, and `/lib` folder structure patterns within each package. Consistent organization patterns make for easier maintenance! :)
+Meteor has a powerful [package system](http://docs.meteor.com/#/full/writingpackages) that allows portable feature sets to be created. Dependencies between packages and npm modules can be officially and explicitly declared. Individual packages can be versioned. Packages can also be re-used in other projects, which can be really useful! Most of the time I build my modules into packages, and I implement the same `/client`, `/server/`, and `/lib` folder structure patterns within each package. Consistent organization patterns make for easier maintenance! :)
 
 
 ##Code structure and organization
@@ -53,8 +54,3 @@ If you're losing pieces of code and having to grep around to find them, somethin
 
 ##An example
 What better way to demonstrate than to give an example! I maintain a [boilerplate](https://github.com/patrickocoffeyo/meteor-boilerplate) that may be helpful when you're starting a project. It's still under development, but it might give you some helpful patterns to follow. If you have any suggestions or ideas, please feel free to fork the project and send me a pull request! :)
-
-
-
-  
-
