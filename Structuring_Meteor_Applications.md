@@ -1,8 +1,8 @@
 #Structuring Meteor Applications
 
-This post is the second in a series of posts about the new JavaScript framework, Meteor. (The first post can be found [here](http://fourword.fourkitchens.com/article/getting-started-meteor).)
+This post is the second in a series of posts about the new JavaScript framework, Meteor. If you are unfamiliar with Meteor, check out the first ([introduction post](http://fourword.fourkitchens.com/article/getting-started-meteor)) in this series, or go through the demos available on [Meteor's project website](http://meteor.com).
 
-I'm going to discuss the importance of implementing proper structure patterns in Meteor applications, and give some advice that may help you organize your codebase. If you are unfamiliar with Meteor, check out the first ([introduction post](http://fourword.fourkitchens.com/article/getting-started-meteor)) in this series, or go through the demos available on [Meteor's project website](http://meteor.com). Let's get started!
+In this post I'm going to discuss the importance of implementing proper structure patterns in Meteor applications, and give some advice that may help you organize your codebase. Let's get started!
 
 ##File organization
 Organizing your source tree can be really difficult, but having a specifically defined pattern for this is crucial, especially as you scale your project. There are lots of source tree patterns available ([Maven being a popular one](http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html)). However Meteor is unique in that it doesn't follow the standard request/response format that most web applications do. 
